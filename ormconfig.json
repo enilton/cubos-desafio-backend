@@ -1,0 +1,13 @@
+{
+  "type":"postgres",
+  "host":"drona.db.elephantsql.com",
+  "port": 5432,
+  "username": "jwplbitv",
+  "password": "O840HrLItRLR7BE_JxhSzxEHJL4lfJ8Z",
+  "database": "jwplbitv",
+  "entities": ["./src/models/*.ts"],
+  "migrations": ["./src/database/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}
