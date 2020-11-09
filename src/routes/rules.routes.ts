@@ -8,15 +8,15 @@ const rulesRouter = Router();
 
 rulesRouter.get('/', async (request, response) => {
   const getRulesService = new GetRulesService();
-  return response.json(await getRulesService.execute());
+  return response.json(await getRulesService.executeGetAll());
 });
 
 rulesRouter.post('/', async (request, response) => {
 
-  const { type, interval } = request.body;
+  const { type, interval, days } = request.body;
 
   const createRuleService = new CreateRuleService();
-  return response.json(await createRuleService.execute({ type, interval }));
+  return response.json(await createRuleService.execute({ type, interval, days }));
 });
 
 rulesRouter.delete('/:id', async (request, response) => {
@@ -25,6 +25,11 @@ rulesRouter.delete('/:id', async (request, response) => {
   return response.json(await deleteRuleService.execute(id));
 });
 
+rulesRouter.get('/disp',async (request, response) => {
+  const { dateStart, dateEnd } = request.body;
+  const getRulesService = new GetRulesService();
+  return response.json(await getRulesService.executeGetDisp({ dateStart, dateEnd }));
+});
 
 
 export default rulesRouter;

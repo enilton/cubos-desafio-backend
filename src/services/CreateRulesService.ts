@@ -10,17 +10,19 @@ import { v4 as uuid } from 'uuid';
 interface IRule {
   type: 'unique | daily | weekly';
   interval: Interval;
+  days: number[];
 }
 
 class CreateRuleService {
 
-  public async execute({type, interval}: IRule): Promise<Rule> {
+  public async execute({type, interval, days}: IRule): Promise<Rule> {
     const rulesRepository = new RulesRepository();
 
     let rule: Rule = new Rule();
     rule.id =  uuid();
     rule.type = type;
     rule.interval = interval;
+    rule.days = days;
 
     await rulesRepository.save(rule);
     return rule;

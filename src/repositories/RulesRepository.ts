@@ -40,6 +40,24 @@ class RulesRepository {
     return JSON.parse(fs.readFileSync(dbConfig.FILEPATH, 'utf8'));
   }
 
+  public async getDisp(dateStart: Date, dateEnd: Date): Promise<Rule[]> {
+    let rules: Array<Rule> = JSON.parse(fs.readFileSync(dbConfig.FILEPATH, 'utf8'));
+    let rulesFilter: Array<Rule> = [];
+
+    if (rules) {
+      rules.filter(item => {
+        if (
+          item.interval.start >= dateStart
+          && item.interval.end <= dateEnd
+        ) {
+          rulesFilter.push(item);
+        }
+      });
+    }
+
+    return rulesFilter;
+  }
+
 }
 
 export default RulesRepository;

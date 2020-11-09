@@ -10,6 +10,8 @@ class Rule {
 
   interval: Interval;
 
+  days: number[];
+
 }
 
 export default Rule;
