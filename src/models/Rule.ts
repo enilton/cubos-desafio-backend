@@ -1,17 +1,15 @@
-import { Guid } from 'guid-typescript';
-
 import Interval from './Interval';
 
 class Rule {
-
   id: string;
 
-  type: 'unique | daily | weekly';
+  type: 'unique' | 'daily' | 'weekly';
 
-  interval: Interval;
+  date: string;
+
+  intervals: Interval[];
 
   days: number[];
-
 }
 
 export default Rule;

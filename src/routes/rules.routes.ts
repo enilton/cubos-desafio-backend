@@ -13,10 +13,10 @@ rulesRouter.get('/', async (request, response) => {
 
 rulesRouter.post('/', async (request, response) => {
 
-  const { type, interval, days } = request.body;
+  const { type, intervals, date, days } = request.body;
 
   const createRuleService = new CreateRuleService();
-  return response.json(await createRuleService.execute({ type, interval, days }));
+  return response.json(await createRuleService.execute({ type, intervals, date, days }));
 });
 
 rulesRouter.delete('/:id', async (request, response) => {

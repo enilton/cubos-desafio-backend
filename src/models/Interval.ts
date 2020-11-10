@@ -1,9 +1,9 @@
 
 class Interval {
 
-  start: Date;
+  start: string;
 
-  end: Date;
+  end: string;
 
 }
 
